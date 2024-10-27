@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtvt4asf7j5iw"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_0mq81"]
+
+[node name="player" type="Area2D" groups=["player"]]
+position = Vector2(556, 486)
+script = ExtResource("1_0mq81")
+metadata/_edit_group_ = true
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(15, 0, -15, 0, 0, -40)
+
+[node name="Polygon2D" type="Line2D" parent="."]
+points = PackedVector2Array(15, 0, 0, -5, -15, 0, 0, -40)
+closed = true
+width = 3.5

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://smmi55u7gll5"]
+
+[ext_resource type="PackedScene" uid="uid://dtvt4asf7j5iw" path="res://player.tscn" id="1_8qdne"]
+[ext_resource type="Script" path="res://spawner.gd" id="2_pyod5"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_8qdne")]
+position = Vector2(645, 581)
+
+[node name="spawner" type="Node2D" parent="."]
+script = ExtResource("2_pyod5")
+
+[node name="heart" type="Line2D" parent="."]
+position = Vector2(3.36842, 1.5)
+scale = Vector2(0.438596, 0.5)
+points = PackedVector2Array(62, 29, 92, 13, 110, 40, 97.2, 73, 64, 103, 33.36, 81, 16, 46, 36, 13)
+closed = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1152.0
+offset_bottom = 720.0
+
+[connection signal="area_entered" from="player" to="player" method="_on_area_entered"]
