@@ -1,0 +1,99 @@
+[gd_scene load_steps=8 format=3 uid="uid://ncpjodni4sg5"]
+
+[ext_resource type="FontFile" uid="uid://c8fo6obed6ads" path="res://sprites/ethnocentric rg.otf" id="1_7wth1"]
+[ext_resource type="Shader" path="res://filter.gdshader" id="2_gq4ls"]
+[ext_resource type="Script" path="res://score_label.gd" id="3_rum1w"]
+[ext_resource type="AudioStream" uid="uid://djv6dj5lp8vs0" path="res://sfx/game_over.wav" id="4_gymwr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_bdlvr"]
+font = ExtResource("1_7wth1")
+font_size = 98
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gbdh1"]
+shader = ExtResource("2_gq4ls")
+shader_parameter/overlay = true
+shader_parameter/scanlines_opacity = 0.239
+shader_parameter/scanlines_width = 0.355
+shader_parameter/grille_opacity = 0.245
+shader_parameter/resolution = Vector2(800, 600)
+shader_parameter/pixelate = true
+shader_parameter/roll = false
+shader_parameter/roll_speed = 5.0
+shader_parameter/roll_size = 15.105
+shader_parameter/roll_variation = 1.356
+shader_parameter/distort_intensity = 0.012
+shader_parameter/noise_opacity = 0.134
+shader_parameter/noise_speed = 6.315
+shader_parameter/static_noise_intensity = 0.06
+shader_parameter/aberration = 0.01
+shader_parameter/brightness = 1.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.58
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.235
+shader_parameter/vignette_opacity = 0.843
+
+[sub_resource type="LabelSettings" id="LabelSettings_331xa"]
+font = ExtResource("1_7wth1")
+font_size = 46
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameOverLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -611.5
+offset_top = -130.0
+offset_right = 611.5
+offset_bottom = 43.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "GAME OVER"
+label_settings = SubResource("LabelSettings_bdlvr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+top_level = true
+material = SubResource("ShaderMaterial_gbdh1")
+offset_left = -1.0
+offset_top = -2.0
+offset_right = 1151.0
+offset_bottom = 718.0
+metadata/_edit_lock_ = true
+
+[node name="ScoreLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -279.0
+offset_top = 15.0
+offset_right = 279.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "score: 0000000"
+label_settings = SubResource("LabelSettings_331xa")
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("3_rum1w")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gymwr")
+pitch_scale = 1.1
+autoplay = true

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dtvt4asf7j5iw"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_0mq81"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_0mq81"]
 
 [node name="player" type="Area2D" groups=["player"]]
 position = Vector2(556, 486)
