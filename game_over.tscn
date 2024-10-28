@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://ncpjodni4sg5"]
+[gd_scene load_steps=10 format=3 uid="uid://ncpjodni4sg5"]
 
 [ext_resource type="FontFile" uid="uid://c8fo6obed6ads" path="res://sprites/ethnocentric rg.otf" id="1_7wth1"]
+[ext_resource type="Script" path="res://game_over.gd" id="1_dxvlj"]
 [ext_resource type="Shader" path="res://filter.gdshader" id="2_gq4ls"]
 [ext_resource type="Script" path="res://score_label.gd" id="3_rum1w"]
 [ext_resource type="AudioStream" uid="uid://djv6dj5lp8vs0" path="res://sfx/game_over.wav" id="4_gymwr"]
@@ -8,6 +9,10 @@
 [sub_resource type="LabelSettings" id="LabelSettings_bdlvr"]
 font = ExtResource("1_7wth1")
 font_size = 98
+
+[sub_resource type="LabelSettings" id="LabelSettings_27m4w"]
+font = ExtResource("1_7wth1")
+font_size = 20
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gbdh1"]
 shader = ExtResource("2_gq4ls")
@@ -35,7 +40,7 @@ shader_parameter/vignette_opacity = 0.843
 
 [sub_resource type="LabelSettings" id="LabelSettings_331xa"]
 font = ExtResource("1_7wth1")
-font_size = 46
+font_size = 50
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -63,6 +68,24 @@ label_settings = SubResource("LabelSettings_bdlvr")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="GameOverLabel" type="Label" parent="GameOverLabel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -611.5
+offset_top = 227.5
+offset_right = 611.5
+offset_bottom = 400.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "press any key to restart"
+label_settings = SubResource("LabelSettings_27m4w")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
@@ -81,10 +104,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -279.0
-offset_top = 15.0
-offset_right = 279.0
-offset_bottom = 71.0
+offset_left = -303.5
+offset_top = 12.5
+offset_right = 303.5
+offset_bottom = 73.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "score: 0000000"
@@ -97,3 +120,14 @@ script = ExtResource("3_rum1w")
 stream = ExtResource("4_gymwr")
 pitch_scale = 1.1
 autoplay = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -13.0
+offset_top = -24.0
+offset_right = 1190.0
+offset_bottom = 762.0
+flat = true
+script = ExtResource("1_dxvlj")
+
+[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]

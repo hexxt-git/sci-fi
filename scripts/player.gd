@@ -19,6 +19,7 @@ var health: int:
 	get:
 		return _health
 
+@onready var fire = $Fire
 
 func _ready() -> void:
 	var main_scene = get_tree().root.get_node("Main") 
@@ -30,14 +31,16 @@ func _ready() -> void:
 	add_child(shoot_timer)
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("ui_up"):
+	if Input.is_action_pressed("forward"):
 		velocity += Vector2(SPEED * delta, 0).rotated(rotation - PI / 2)
+		fire.visible = true
+	else: fire.visible = false
 
-	direction = Input.get_axis("ui_left", "ui_right")
+	direction = Input.get_axis("left", "right")
 	if direction:
 		rotation += direction * ROTATION_SPEED * delta
 
-	if Input.is_action_pressed("ui_select") and can_shoot:
+	if Input.is_action_pressed("shoot") and can_shoot:
 		shoot()
 
 	if velocity.length() > 2.5:
