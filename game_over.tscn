@@ -81,7 +81,7 @@ offset_right = 611.5
 offset_bottom = 400.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "press any key to restart"
+text = "press anywhere to restart"
 label_settings = SubResource("LabelSettings_27m4w")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -123,11 +123,14 @@ autoplay = true
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
-offset_left = -13.0
-offset_top = -24.0
-offset_right = 1190.0
-offset_bottom = 762.0
+offset_left = -33.0
+offset_top = -19.0
+offset_right = 1170.0
+offset_bottom = 767.0
+action_mode = 0
+button_mask = 7
 flat = true
 script = ExtResource("1_dxvlj")
 
-[connection signal="pressed" from="Button" to="Button" method="_on_pressed"]
+[connection signal="button_down" from="Button" to="Button" method="_on_button_down"]
+[connection signal="focus_entered" from="Button" to="Button" method="_on_focus_entered"]
