@@ -1,7 +1,0 @@
-[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://deydq1rk8xffg"]
-
-[ext_resource type="FontFile" uid="uid://c8fo6obed6ads" path="res://sprites/ethnocentric rg.otf" id="1_gjbqk"]
-
-[resource]
-font = ExtResource("1_gjbqk")
-font_size = 23
